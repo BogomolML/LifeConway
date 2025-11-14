@@ -7,7 +7,7 @@ from concoleGUI import draw_field
 
 
 SIZE = 20
-THRESHOLD = 0.05
+THRESHOLD = 0.3
 
 
 field = Field(SIZE, THRESHOLD)
@@ -17,5 +17,5 @@ while True:
     field.field = field.new_generation
     sleep(0.1)
 
-    if sha256(field.new_generation) in field.hash_list or is_pressed('q'):
+    if sha256(field.field.tobytes()).hexdigest() in field.hash_list or is_pressed('q'):
         break

@@ -21,6 +21,7 @@ class Field:
     @field.setter
     def field(self, new_field):
         self._field = new_field
+        self._new_generation = np.zeros_like(self._field)
 
     @property
     def new_generation(self):
@@ -48,8 +49,7 @@ class Field:
         return count
 
     def save_old_generation(self):
-        h = sha256(self._field)
-        print(h)
+        h = sha256(self._field.tobytes()).hexdigest()
         self._hash_list.append(h)
         if len(self._hash_list) > self._cnt_saves:
             self._hash_list.pop(0)
