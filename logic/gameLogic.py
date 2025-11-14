@@ -9,6 +9,7 @@ class Field:
         self._new_generation = np.zeros_like(self._field)
         self._cnt_saves = 20
         self._hash_list = []
+        self._is_limit = True
 
     @property
     def hash_list(self):
@@ -44,6 +45,9 @@ class Field:
         count = 0
         for dx, dy in directions:
             x, y = el[0] + dx, el[1] + dy
+            if not self._is_limit:
+                # TODO: добавить код для случая без ограничения
+                pass
             if 0 <= x < rows and 0 <= y < cols:
                 count += self._field[x, y]
         return count

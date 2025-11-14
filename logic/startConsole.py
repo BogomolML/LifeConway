@@ -2,8 +2,8 @@ from time import sleep
 from hashlib import sha256
 from keyboard import is_pressed
 
-from gameLogic import Field
-from concoleGUI import draw_field
+from logic.gameLogic import Field
+from GUI.concoleGUI import draw_field
 
 
 SIZE = 20
